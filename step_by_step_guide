@@ -1,0 +1,66 @@
+If your screen is frozen after attempting to log in to kali linux for the first time after install you can try these steps to fix the problem 
+These are the steps i followed, but i made the mistake of choosing to install kdeplasma. If you do that it is likely you will get the frozen 
+screen at login in which case follow these instructions:
+
+Switch to a Virtual Console:
+Press Ctrl + Alt + F4 (maybe f3, try them all)
+
+Depending on your distribution, the default display manager can vary. Here are a few commands to try reconfiguring different display managers:
+
+LightDM:
+
+sudo dpkg-reconfigure lightdm
+
+
+Restart Your System:
+After configuring LightDM, restart your system:
+
+Type:
+sudo reboot
+
+Attempt to Log In:
+Once your system has restarted, try logging in again and see if the freezing issue still occurs.
+
+If the issue persists, try the following steps :
+
+Switch to a Virtual Console:
+Press Ctrl + Alt + F4 (maybe f3, try them all) to switch to a virtual console. This allows you to access a text-based
+terminal outside of the graphical environment.
+
+Login to the Virtual Console:
+Log in using your username and password.
+
+Check System Logs:
+Review system logs for any error messages or warnings. You can check the syslog for general system messages:
+
+cat /var/log/syslog
+Additionally, check Xorg logs for graphical server-related information:
+cat /var/log/Xorg.0.log
+
+Look for any error messages or patterns that might indicate what's causing the issue.
+
+Check Disk Space and System Resources:
+Ensure that there is sufficient free disk space and available system resources. You can check disk space with:
+df -h
+Check memory usage with:
+
+free -h
+
+Ensure that there are no critical resource shortages.
+
+Restart the Graphical Environment:
+Try restarting the graphical environment. You can do this by restarting the display manager. For LightDM, you can use:
+
+sudo service lightdm restart
+For other display managers, replace "lightdm" with the appropriate service name.
+
+Revert to Previous Configuration:
+If the issue started after changing the display manager, consider reverting to the previous configuration. If you were 
+using GDM before, you can switch back to it:
+
+sudo dpkg-reconfigure gdm
+
+Follow the prompts and restart your system.
+
+After going through these steps, check if the issue is resolved. If you find any relevant error messages or if the problem persists, 
+please share the details, and I'll do my best to assist you further.
